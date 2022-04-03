@@ -1,5 +1,5 @@
 # raspberry_pi_server
-Raspberry PI server which takes commands from a ROS client and sends PWM commands to the connected robot arm servos.
+Raspberry PI server which takes commands from a ROS client and sends PWM commands to the connected robot arm servos. The server open a reverse HTTP proxy through ngrok. This allows the server to be assesible on the public wifi and can be teleoperated remotely.
 
 ## Install packages
 In order to run the server make sure you install the required pip packages. From the root director run:
@@ -12,8 +12,7 @@ foo@bar:~$ pip3 install -r ./requirements.txt
 In order to run the server execute:
 
 ```console
-foo@bar:~$ cd ./scripts
-foo@bar:~$ flask run
+foo@bar:~$ ./start.sh
 ```
 
 ## TODO - Put everything in a docker container
