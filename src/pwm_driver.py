@@ -19,11 +19,11 @@ class PwmDriver:
 
         self.pca = PCA9685(i2c)
         self.pca.frequency = 50
-        self.servo1 = servo.Servo(pca.channels[0])
-        self.servo2 = servo.Servo(pca.channels[1])
-        self.servo3 = servo.Servo(pca.channels[2])
-        self.servo4 = servo.Servo(pca.channels[3])
-        self.servo5 = servo.Servo(pca.channels[4])
+        self.servo1 = servo.Servo(self.pca.channels[0])
+        self.servo2 = servo.Servo(self.pca.channels[1])
+        self.servo3 = servo.Servo(self.pca.channels[2])
+        self.servo4 = servo.Servo(self.pca.channels[3])
+        self.servo5 = servo.Servo(self.pca.channels[4])
 
         self.angle_update_value = 5
 
@@ -40,7 +40,7 @@ class PwmDriver:
         return ret
 
     def move_servo1(self, direction):
-        if limit_check(self.servo1.angle) == False: return -1
+        if self.limit_check(self.servo1.angle, direction) == False: return -1
 
         if direction == 1:
             self.servo1.angle += self.angle_update_value
@@ -50,7 +50,7 @@ class PwmDriver:
         return self.servo1.angle
 
     def move_servo2(self, direction):
-        if limit_check(self.servo2.angle) == False: return -1
+        if self.limit_check(self.servo2.angle, direction) == False: return -1
 
         if direction == 1:
             self.servo2.angle += self.angle_update_value
@@ -60,7 +60,7 @@ class PwmDriver:
         return self.servo2.angle
 
     def move_servo3(self, direction):
-        if limit_check(self.servo3.angle) == False: return -1
+        if self.limit_check(self.servo3.angle, direction) == False: return -1
 
         if direction == 1:
             self.servo3.angle += self.angle_update_value
@@ -70,7 +70,7 @@ class PwmDriver:
         return self.servo3.angle
 
     def move_servo4(self, direction):
-        if limit_check(self.servo4.angle) == False: return -1
+        if self.limit_check(self.servo4.angle, direction) == False: return -1
 
         if direction == 1:
             self.servo4.angle += self.angle_update_value
@@ -80,7 +80,7 @@ class PwmDriver:
         return self.servo4.angle
 
     def move_servo5(self, direction):
-        if limit_check(self.servo5.angle) == False: return -1
+        if self.limit_check(self.servo5.angle, direction) == False: return -1
 
         if direction == 1:
             self.servo5.angle += self.angle_update_value
