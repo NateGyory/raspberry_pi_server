@@ -25,67 +25,51 @@ class PwmDriver:
         self.servo4 = servo.Servo(pca.channels[3])
         self.servo5 = servo.Servo(pca.channels[4])
 
-        self.angle_update_value = 5
-
         self.servo1.angle = 50
         self.servo2.angle = 50
         self.servo3.angle = 50
         self.servo4.angle = 50
         self.servo5.angle = 50
 
-    def limit_check(self, angle, direction):
+    def limit_check(self, current_motor_angle, motor_angle_update):
         ret = True
-        if direction == 1 and self.servo1.angle + self.angle_update_value > 180 or direction == -1 and self.servo1.angle - self.angle_update_value < 0:
+        new_angle = current_motor_angle + motor_angle_update
+        if new_angle > 180 or new_angle < 0
             ret = False
         return ret
 
-    def move_servo1(self, direction):
-        if limit_check(self.servo1.angle) == False: return -1
+    def move_servo1(self, motor_angle_update):
+        if limit_check(self.servo1.angle, motor_angle_update) == False: return -1
 
-        if direction == 1:
-            self.servo1.angle += self.angle_update_value
-        else:
-            self.servo1.angle -= self.angle_update_value
+        self.servo1.angle += motor_angle_update
 
         return self.servo1.angle
 
-    def move_servo2(self, direction):
-        if limit_check(self.servo2.angle) == False: return -1
+    def move_servo2(self, motor_angle_update):
+        if limit_check(self.servo2.angle, motor_angle_update) == False: return -1
 
-        if direction == 1:
-            self.servo2.angle += self.angle_update_value
-        else:
-            self.servo2.angle -= self.angle_update_value
+        self.servo2.angle += motor_angle_update
 
         return self.servo2.angle
 
-    def move_servo3(self, direction):
-        if limit_check(self.servo3.angle) == False: return -1
+    def move_servo3(self, motor_angle_update):
+        if limit_check(self.servo3.angle, motor_angle_update) == False: return -1
 
-        if direction == 1:
-            self.servo3.angle += self.angle_update_value
-        else:
-            self.servo3.angle -= self.angle_update_value
+        self.servo3.angle += motor_angle_update
 
         return self.servo3.angle
 
-    def move_servo4(self, direction):
-        if limit_check(self.servo4.angle) == False: return -1
+    def move_servo4(self, motor_angle_update):
+        if limit_check(self.servo4.angle, motor_angle_update) == False: return -1
 
-        if direction == 1:
-            self.servo4.angle += self.angle_update_value
-        else:
-            self.servo4.angle -= self.angle_update_value
+        self.servo4.angle += motor_angle_update
 
         return self.servo4.angle
 
     def move_servo5(self, direction):
-        if limit_check(self.servo5.angle) == False: return -1
+        if limit_check(self.servo5.angle, motor_angle_update) == False: return -1
 
-        if direction == 1:
-            self.servo5.angle += self.angle_update_value
-        else:
-            self.servo5.angle -= self.angle_update_value
+        self.servo5.angle += motor_angle_update
 
         return self.servo5.angle
 
