@@ -8,7 +8,7 @@ pwm_driver = PwmDriver()
 def servo1():
     request_data = request.get_json()
 
-    motor_angle_update = request_data['motor_angle_update']
+    motor_angle_update = request_data['motor_angle']
     angle = pwm_driver.move_servo1(motor_angle_update)
 
     msg = ''
@@ -23,7 +23,7 @@ def servo1():
 def servo2():
     request_data = request.get_json()
 
-    motor_angle_update = request_data['motor_angle_update']
+    motor_angle_update = request_data['motor_angle']
     angle = pwm_driver.move_servo2(motor_angle_update)
 
     msg = ''
@@ -38,7 +38,7 @@ def servo2():
 def servo3():
     request_data = request.get_json()
 
-    motor_angle_update = request_data['motor_angle_update']
+    motor_angle_update = request_data['motor_angle']
     angle = pwm_driver.move_servo3(motor_angle_update)
 
     msg = ''
@@ -53,7 +53,7 @@ def servo3():
 def servo4():
     request_data = request.get_json()
 
-    motor_angle_update = request_data['motor_angle_update']
+    motor_angle_update = request_data['motor_angle']
     angle = pwm_driver.move_servo4(motor_angle_update)
 
     msg = ''
@@ -68,7 +68,7 @@ def servo4():
 def servo5():
     request_data = request.get_json()
 
-    motor_angle_update = request_data['motor_angle_update']
+    motor_angle_update = request_data['motor_angle']
     angle = pwm_driver.move_servo5(motor_angle_update)
 
     msg = ''
