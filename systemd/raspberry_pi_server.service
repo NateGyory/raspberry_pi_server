@@ -1,0 +1,11 @@
+[Unit]
+Description=Flask raspberry pi server.
+
+[Service]
+User=nate
+WorkingDirectory=/home/nate/Development/raspberry_pi_server/src
+ExecStart=flask run
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

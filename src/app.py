@@ -8,7 +8,7 @@ pwm_driver = PwmDriver()
 def servo1():
     request_data = request.get_json()
 
-    motor_angle_update = request_data['motor_angle']
+    motor_angle_update = request_data['motor_angle_update']
     angle = pwm_driver.move_servo1(motor_angle_update)
 
     msg = ''
@@ -23,7 +23,7 @@ def servo1():
 def servo2():
     request_data = request.get_json()
 
-    motor_angle_update = request_data['motor_angle']
+    motor_angle_update = request_data['motor_angle_update']
     angle = pwm_driver.move_servo2(motor_angle_update)
 
     msg = ''
@@ -38,7 +38,7 @@ def servo2():
 def servo3():
     request_data = request.get_json()
 
-    motor_angle_update = request_data['motor_angle']
+    motor_angle_update = request_data['motor_angle_update']
     angle = pwm_driver.move_servo3(motor_angle_update)
 
     msg = ''
@@ -53,7 +53,7 @@ def servo3():
 def servo4():
     request_data = request.get_json()
 
-    motor_angle_update = request_data['motor_angle']
+    motor_angle_update = request_data['motor_angle_update']
     angle = pwm_driver.move_servo4(motor_angle_update)
 
     msg = ''
@@ -68,7 +68,7 @@ def servo4():
 def servo5():
     request_data = request.get_json()
 
-    motor_angle_update = request_data['motor_angle']
+    motor_angle_update = request_data['motor_angle_update']
     angle = pwm_driver.move_servo5(motor_angle_update)
 
     msg = ''
@@ -77,5 +77,19 @@ def servo5():
     else:
         msg = 'servo5 is at its limit'
 
+    return msg
+
+
+@app.route("/ik_angles", methods=['POST'])
+def ik_angles():
+    request_data = request.get_json()
+
+    angles_update = request_data['angles_update']
+    pwm_driver.move_servo1(angles_update[0])
+    pwm_driver.move_servo2(angles_update[1])
+    pwm_driver.move_servo3(angles_update[2])
+    pwm_driver.move_servo4(angles_update[3])
+
+    msg = ''
     return msg
 
