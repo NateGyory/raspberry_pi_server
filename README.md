@@ -14,5 +14,3 @@ In order to run the server execute:
 ```console
 foo@bar:~$ ./start.sh
 ```
-
-## TODO - Put everything in a docker container
